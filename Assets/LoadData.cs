@@ -73,6 +73,7 @@ public class LoadData : MonoBehaviour
                 // Create nodes
                 if(xmlNode.Name == "node")
                 {
+                    Debug.Log("found a node"); 
                     float x = float.Parse(xmlNode.Attributes[1].Value);
                     Debug.Log("x: " + x);
                     float y = float.Parse(xmlNode.Attributes[2].Value);
@@ -91,12 +92,14 @@ public class LoadData : MonoBehaviour
                     //nodeCountText.text = "Nodes: " + nodeCount; 
                 }
                 // Create edges
-                /*
+                
                 if(xmlNode.Name == "edge")
                 {
                     Link linkObject = Instantiate(linkPrefab, new Vector3(0, 0, 0), Quaternion.identity) as Link;
+                    Debug.Log("linkObject: " + linkObject); 
                     //linkObject.id = xmlNode.Attributes["id"].Value;
                     linkObject.id = xmlNode.Attributes[0].Value; 
+                    Debug.Log("id: " + linkObject.id); 
                     //linkObject.sourceId = xmlNode.Attributes["source"].Value;
                     //linkObject.targetId = xmlNode.Attributes["target"].Value;
                     //linkObject.status = xmlNode.Attributes["status"].Value;
@@ -110,8 +113,8 @@ public class LoadData : MonoBehaviour
                 }
 
                 //map node edges
-                MapLinkNodes();
-                */
+                //MapLinkNodes();
+                
 
                 //statusText.text = "";
                 
