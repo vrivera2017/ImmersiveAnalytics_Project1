@@ -9,10 +9,10 @@ using System.IO;
 namespace Visualization{
 public class LoadData : MonoBehaviour
 {
-    //public Node DataPoint; //DataPoint: prefab to be used when creating nodes
+    public Node DataPoint; //DataPoint: prefab to be used when creating nodes
     public Link linkPrefab; //linkPrefab: prefab to be used when creating links
 
-    public GameObject DataPoint; 
+    //public GameObject DataPoint; 
     //public GameObject linkPrefab; 
 
     private Hashtable nodetable; //holds live instances of the prefab for nodes
@@ -87,19 +87,19 @@ public class LoadData : MonoBehaviour
                 if(xmlNode.Name == "node")
                 {
                     Debug.Log("found a node"); 
-                    float x = float.Parse(xmlNode.Attributes[1].Value);
+                    float x = float.Parse(xmlNode.Attributes["x"].Value);
                     Debug.Log("x: " + x);
-                    float y = float.Parse(xmlNode.Attributes[2].Value);
+                    float y = float.Parse(xmlNode.Attributes["y"].Value);
                     Debug.Log("y: " + y);
-                    float z = float.Parse(xmlNode.Attributes[3].Value);
+                    float z = float.Parse(xmlNode.Attributes["z"].Value);
                     Debug.Log("z: " + z); 
-                    //Node nodeObject = Instantiate(DataPoint, new Vector3(x, y, z), Quaternion.identity) as Node;
-                    GameObject nodeObject = Instantiate(DataPoint, new Vector3(x, y, z), Quaternion.identity); 
+                    Node nodeObject = Instantiate(DataPoint, new Vector3(x, y, z), Quaternion.identity) as Node;
+                    //GameObject nodeObject = Instantiate(DataPoint, new Vector3(x, y, z), Quaternion.identity); 
                     //nodeObject.nodeText.text
                     //nodeObject.id = xmlNode.Attributes[0].Value;
-                    nodeObject.name = xmlNode.Attributes[0].Value; 
+                    nodeObject.id = xmlNode.Attributes["id"].Value; 
                     //nodetable.Add(nodeObject.id, nodeObject);
-                    nodetable.Add(nodeObject.name, nodeObject); 
+                    nodetable.Add(nodeObject.id, nodeObject); 
                     //statusText.text = "Loading Node" + nodeObject.id;
                     nodeCount++;
                     //nodeCountText.text = "Nodes: " + nodeCount; 
@@ -123,8 +123,6 @@ public class LoadData : MonoBehaviour
                 {
                     Debug.Log("found an edge"); 
                     Link linkObject = Instantiate(linkPrefab, new Vector3(0, 0, 0), Quaternion.identity) as Link;
-                    //lineRenderer = gameObject.AddComponent<LineRenderer>();
-                    //Debug.Log("linerender2: " + lineRenderer); 
                     Debug.Log("linkObject: " + linkObject); 
                     linkObject.id = xmlNode.Attributes[0].Value;
                     Debug.Log("linkObject id: " + linkObject.id); 

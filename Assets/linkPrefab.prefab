@@ -59,6 +59,9 @@ MonoBehaviour:
   targetId: 
   status: 
   loaded: 0
+  distance: 0
+  linkPrefab: {fileID: 0}
+  lineRenderer: {fileID: 0}
 --- !u!191 &191660864562430412
 OffMeshLink:
   m_ObjectHideFlags: 1

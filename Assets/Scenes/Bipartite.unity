@@ -113,12 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &9512983 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114615298373304496, guid: a9c28b1d7dcc449f89220d3a7786377b,
-    type: 2}
-  m_PrefabInternal: {fileID: 1113824241}
-  m_Script: {fileID: 11500000, guid: 6a70ebaf92b4d4cd2948b8862250f4a1, type: 3}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,9 +206,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d9e921c4c244b949bfa2fe02825816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkPrefab: {fileID: 9512983}
-  DataPoint: {fileID: 1068981426173320, guid: 461f989e0ca1e4e8296653f1af1ae00b, type: 2}
-  lineRenderer: {fileID: 0}
+  DataPoint: {fileID: 114729060275604180, guid: 461f989e0ca1e4e8296653f1af1ae00b,
+    type: 2}
+  linkPrefab: {fileID: 114615298373304496, guid: a9c28b1d7dcc449f89220d3a7786377b,
+    type: 2}
 --- !u!4 &267037785
 Transform:
   m_ObjectHideFlags: 0
@@ -619,6 +614,17 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114615298373304496, guid: a9c28b1d7dcc449f89220d3a7786377b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615298373304496, guid: a9c28b1d7dcc449f89220d3a7786377b,
+        type: 2}
+      propertyPath: linkPrefab
+      value: 
+      objectReference: {fileID: 1987394301402908, guid: 4dd284ff4b8cf4235ad15f8f3a795b20,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9c28b1d7dcc449f89220d3a7786377b, type: 2}
   m_IsPrefabAsset: 0
@@ -663,7 +669,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1068981426173320, guid: 461f989e0ca1e4e8296653f1af1ae00b, type: 2}
       propertyPath: m_Name
-      value: Sphere
+      value: Node
       objectReference: {fileID: 0}
     - target: {fileID: 1068981426173320, guid: 461f989e0ca1e4e8296653f1af1ae00b, type: 2}
       propertyPath: m_IsActive
