@@ -13,6 +13,7 @@ public class LoadData : MonoBehaviour
     public Link linkPrefab; //linkPrefab: prefab to be used when creating links
 
     public GameObject DataPoint; 
+    //public GameObject linkPrefab; 
 
     private Hashtable nodetable; //holds live instances of the prefab for nodes
     private Hashtable linktable; //hold live instance of the prefab for links
@@ -21,6 +22,8 @@ public class LoadData : MonoBehaviour
     private int linkCount = 0; //holds the numeric value for the count of links
     //private GUIText nodeCountText;
     //private GUIText linkCountText;
+    //public LineRenderer lineRenderer; 
+
 
     // Method for mapping links to nodes
     
@@ -36,6 +39,16 @@ public class LoadData : MonoBehaviour
 
 
     //method for loading the GraphML Layout file
+
+
+    void Start()
+    {
+
+          nodetable = new Hashtable();
+          linktable = new Hashtable(); 
+          StartCoroutine(LoadLayout()); 
+
+    }
     
     public IEnumerator LoadLayout() 
     {
@@ -92,28 +105,48 @@ public class LoadData : MonoBehaviour
                     //nodeCountText.text = "Nodes: " + nodeCount; 
                 }
                 // Create edges
+                /*
+                if(xmlNode.Name == "edge")
+                {
+                    Debug.Log("found an edge");
+                    GameObject linkObject = Instantiate(linkPrefab, new Vector3(0,0,0), Quaternion.identity); 
+                    linkObject.name = xmlNode.Attributes[0].Value; 
+                    linkObject.sourceId = xmlNode.Attributes[1].Value;
+                    linkObject.targetId = xmlNode.Attributes[2].Value; 
+                    linktable.Add(linkObject.name, linkObject); 
+                    linkCount++; 
+                }
+                */
+
                 
                 if(xmlNode.Name == "edge")
                 {
+                    Debug.Log("found an edge"); 
                     Link linkObject = Instantiate(linkPrefab, new Vector3(0, 0, 0), Quaternion.identity) as Link;
+                    //lineRenderer = gameObject.AddComponent<LineRenderer>();
+                    //Debug.Log("linerender2: " + lineRenderer); 
                     Debug.Log("linkObject: " + linkObject); 
-                    //linkObject.id = xmlNode.Attributes["id"].Value;
-                    linkObject.id = xmlNode.Attributes[0].Value; 
+                    linkObject.id = xmlNode.Attributes[0].Value;
+                    Debug.Log("linkObject id: " + linkObject.id); 
+                    //linkObject.id = xmlNode.Attributes[0].Value; 
                     Debug.Log("id: " + linkObject.id); 
-                    //linkObject.sourceId = xmlNode.Attributes["source"].Value;
-                    //linkObject.targetId = xmlNode.Attributes["target"].Value;
-                    //linkObject.status = xmlNode.Attributes["status"].Value;
-
                     linkObject.sourceId = xmlNode.Attributes[1].Value;
                     linkObject.targetId = xmlNode.Attributes[2].Value;
+                    //linkObject.status = xmlNode.Attributes["status"].Value;
+
+                    //linkObject.sourceId = xmlNode.Attributes[1].Value;
+                    //linkObject.targetId = xmlNode.Attributes[2].Value;
                     linktable.Add(linkObject.id, linkObject);
                     //statusText.text = "Loading edge: " + linkObject.id;
                     linkCount++;
                     //linkCountText.text = "Edges: " + linkCount; 
                 }
+                
+
+                
 
                 //map node edges
-                //MapLinkNodes();
+                MapLinkNodes();
                 
 
                 //statusText.text = "";
@@ -134,12 +167,6 @@ public class LoadData : MonoBehaviour
 
     
 
-    void Start()
-    {
-
-          nodetable = new Hashtable();
-          StartCoroutine(LoadLayout()); 
-    }
 
 
 

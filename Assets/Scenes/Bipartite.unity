@@ -214,6 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linkPrefab: {fileID: 9512983}
   DataPoint: {fileID: 1068981426173320, guid: 461f989e0ca1e4e8296653f1af1ae00b, type: 2}
+  lineRenderer: {fileID: 0}
 --- !u!4 &267037785
 Transform:
   m_ObjectHideFlags: 0
