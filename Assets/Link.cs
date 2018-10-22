@@ -50,7 +50,7 @@ public class Link : MonoBehaviour {
         {
             Debug.Log("source: " + source); 
             Debug.Log("target: " + target);  
-            Debug.Log("inside if of update in Link.cs"); 
+            Debug.Log("inside of update in Link.cs"); 
             //draw links as full duplex, half in each direction
             //Vector3 m = (target.transform.position - source.transform.position) / 2 + source.transform.position;
             //Vector3 m = target.transform.position-source.transform.position;
