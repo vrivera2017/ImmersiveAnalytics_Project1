@@ -5,12 +5,12 @@ namespace Visualization{
 public class Node : MonoBehaviour {
 
     public string id;
-    //public TextMesh nodeText;
+    public TextMesh nodeText;
 	
 	// Update is called once per frame
 	void Update () {
-        //node text always facing camera
-        //nodeText.transform.LookAt(Camera.main.transform); 
+        //node text always facing camera 
+        nodeText.transform.LookAt(Camera.main.transform); 
 		
 	}
 }
