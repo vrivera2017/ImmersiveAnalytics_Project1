@@ -32,8 +32,8 @@ public class LoadData : MonoBehaviour
         foreach(string key in linktable.Keys)
         {
             Link link = linktable[key] as Link;
-            link.source = nodetable[link.sourceId] as GameObject;
-            link.target = nodetable[link.targetId] as GameObject;
+            link.source = nodetable[link.sourceId] as Node;
+            link.target = nodetable[link.targetId] as Node;
         }
     }
 
@@ -98,6 +98,7 @@ public class LoadData : MonoBehaviour
                     //nodeObject.nodeText.text
                     //nodeObject.id = xmlNode.Attributes[0].Value;
                     nodeObject.id = xmlNode.Attributes["id"].Value; 
+                    nodeObject.name = xmlNode.Attributes["id"].Value; 
                     //nodetable.Add(nodeObject.id, nodeObject);
                     nodetable.Add(nodeObject.id, nodeObject); 
                     //statusText.text = "Loading Node" + nodeObject.id;
@@ -124,12 +125,13 @@ public class LoadData : MonoBehaviour
                     Debug.Log("found an edge"); 
                     Link linkObject = Instantiate(linkPrefab, new Vector3(0, 0, 0), Quaternion.identity) as Link;
                     Debug.Log("linkObject: " + linkObject); 
-                    linkObject.id = xmlNode.Attributes[0].Value;
+                    linkObject.id = xmlNode.Attributes["id"].Value;
+                    linkObject.name = xmlNode.Attributes["id"].Value; 
                     Debug.Log("linkObject id: " + linkObject.id); 
                     //linkObject.id = xmlNode.Attributes[0].Value; 
                     Debug.Log("id: " + linkObject.id); 
-                    linkObject.sourceId = xmlNode.Attributes[1].Value;
-                    linkObject.targetId = xmlNode.Attributes[2].Value;
+                    linkObject.sourceId = xmlNode.Attributes["source"].Value;
+                    linkObject.targetId = xmlNode.Attributes["target"].Value;
                     //linkObject.status = xmlNode.Attributes["status"].Value;
 
                     //linkObject.sourceId = xmlNode.Attributes[1].Value;

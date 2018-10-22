@@ -7,10 +7,10 @@ namespace Visualization{
 public class Link : MonoBehaviour {
 
     public string id;
-    //public Node source;
-    //public Node target;
-    public GameObject source; 
-    public GameObject target; 
+    public Node source;
+    public Node target;
+    //public GameObject source; 
+    //public GameObject target; 
     public string sourceId;
     public string targetId;
     public string status;
@@ -19,7 +19,7 @@ public class Link : MonoBehaviour {
     public GameObject linkPrefab; 
 
     public LineRenderer lineRenderer;
-    
+
 
 	// Use this for initialization
     
